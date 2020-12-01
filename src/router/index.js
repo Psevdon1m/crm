@@ -1,30 +1,68 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
 
-Vue.use(VueRouter);
 
-const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
-  }
-];
+import Vue from 'vue'
+import Router from 'vue-router'
 
-const router = new VueRouter({
-  mode: "history",
+Vue.use(Router)
+
+export default new Router({
+  mode: 'history',
   base: process.env.BASE_URL,
-  routes
-});
+  routes: [
+    {
+      path: '/login',
+      name: 'login',
+      meta: {layout: 'empty'},
+      component: () => import('../views/Login.vue')
+    },
+    {
+      path: '/register',
+      name: 'register',
+      meta: {layout: 'empty'},
+      component: () => import('../views/Register.vue')
+    },
+    {
+      path: '/',
+      name: 'home',
+      meta: {layout: 'main'},
+      component: () => import('../views/Home.vue')
+    },
+    {
+      path: '/categories',
+      name: 'categories',
+      meta: {layout: 'main'},
+      component: () => import('../views/Categories.vue')
+    },
+    {
+      path: '/detail/:id',
+      name: 'detail',
+      meta: {layout: 'main'},
+      component: () => import('../views/DetailRecord.vue')
+    },
+    {
+      path: '/history',
+      name: 'history',
+      meta: {layout: 'main'},
+      component: () => import('../views/History.vue')
+    },
+    {
+      path: '/planning',
+      name: 'planning',
+      meta: {layout: 'main'},
+      component: () => import('../views/Planning.vue')
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      meta: {layout: 'main'},
+      component: () => import('../views/Profile.vue')
+    },
+    {
+      path: '/record',
+      name: 'record',
+      meta: {layout: 'main'},
+      component: () => import('../views/Record.vue')
+    }
+  ]
+})
 
-export default router;
