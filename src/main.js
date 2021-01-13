@@ -6,6 +6,7 @@ import router from "./router";
 import store from "./store/index";
 import dateFilter from '@/filters/date.filter';
 import currencyFilter from '@/filters/currency.filter';
+import tooltipDirective from '@/directives/tooltip.directive';
 import messagePlugin from '@/utils/message.plugin';
 import vuetify from "./plugins/vuetify";
 import Loader from "@/components/app/Loader"
@@ -20,6 +21,7 @@ Vue.config.productionTip = false;
 
 Vue.use(messagePlugin);
 Vue.use(Vuelidate);
+Vue.directive('tooltip', tooltipDirective)
 Vue.filter('date', dateFilter);
 Vue.filter('currency', currencyFilter);
 Vue.component('Loader', Loader)
